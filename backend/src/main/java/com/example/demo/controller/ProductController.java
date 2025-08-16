@@ -4,6 +4,8 @@ import com.example.demo.dto.ProductDto;
 import com.example.demo.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,17 +29,20 @@ public class ProductController {
     }
     
     @PostMapping
-    public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto) {
+    @PreAuthorize("hasAnyRole('admin', 'manager')")
+    public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto, Authentication authentication) {
         return ResponseEntity.ok(productService.createProduct(productDto));
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<ProductDto> updateProduct(@PathVariable Long id, @RequestBody ProductDto productDto) {
+    @PreAuthorize("hasAnyRole('admin', 'manager')")
+    public ResponseEntity<ProductDto> updateProduct(@PathVariable Long id, @RequestBody ProductDto productDto, Authentication authentication) {
         return ResponseEntity.ok(productService.updateProduct(id, productDto));
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+    @PreAuthorize("hasRole('admin')")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id, Authentication authentication) {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
     }

@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { UserProfileComponent } from './components/user-profile/user-profile';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    UserProfileComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

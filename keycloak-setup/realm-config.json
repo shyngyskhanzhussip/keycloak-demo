@@ -1,0 +1,392 @@
+{
+  "realm": "ecommerce-demo",
+  "displayName": "E-Commerce Demo Realm",
+  "displayNameHtml": "<div class=\"kc-logo-text\"><span>E-Commerce Demo</span></div>",
+  "enabled": true,
+  "registrationAllowed": false,
+  "registrationEmailAsUsername": false,
+  "rememberMe": true,
+  "verifyEmail": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "editUsernameAllowed": false,
+  "bruteForceProtected": true,
+  "permanentLockout": false,
+  "maxFailureWaitSeconds": 900,
+  "minimumQuickLoginWaitSeconds": 60,
+  "waitIncrementSeconds": 60,
+  "quickLoginCheckMilliSeconds": 1000,
+  "maxDeltaTimeSeconds": 43200,
+  "failureFactor": 30,
+  "defaultRoles": [
+    "offline_access",
+    "uma_authorization",
+    "user"
+  ],
+  "requiredCredentials": [
+    "password"
+  ],
+  "passwordPolicy": "length(8) and digits(1) and lowerCase(1) and upperCase(1)",
+  "otpPolicyType": "totp",
+  "otpPolicyAlgorithm": "HmacSHA1",
+  "otpPolicyInitialCounter": 0,
+  "otpPolicyDigits": 6,
+  "otpPolicyLookAheadWindow": 1,
+  "otpPolicyPeriod": 30,
+  "otpSupportedApplications": [
+    "FreeOTP",
+    "Google Authenticator"
+  ],
+  "webAuthnPolicyRpEntityName": "E-Commerce Demo",
+  "webAuthnPolicySignatureAlgorithms": [
+    "ES256"
+  ],
+  "webAuthnPolicyRpId": "",
+  "webAuthnPolicyAttestationConveyancePreference": "not specified",
+  "webAuthnPolicyAuthenticatorAttachment": "not specified",
+  "webAuthnPolicyRequireResidentKey": "not specified",
+  "webAuthnPolicyUserVerificationRequirement": "not specified",
+  "webAuthnPolicyCreateTimeout": 0,
+  "webAuthnPolicyAvoidSameAuthenticatorRegister": false,
+  "webAuthnPolicyAcceptableAaguids": [],
+  "browserSecurityHeaders": {
+    "contentSecurityPolicyReportOnly": "",
+    "xContentTypeOptions": "nosniff",
+    "xRobotsTag": "none",
+    "xFrameOptions": "SAMEORIGIN",
+    "contentSecurityPolicy": "frame-src 'self'; frame-ancestors 'self'; object-src 'none';",
+    "xXSSProtection": "1; mode=block",
+    "strictTransportSecurity": "max-age=31536000; includeSubDomains"
+  },
+  "smtpServer": {},
+  "eventsEnabled": true,
+  "eventsListeners": [
+    "jboss-logging"
+  ],
+  "enabledEventTypes": [
+    "LOGIN",
+    "LOGIN_ERROR",
+    "LOGOUT",
+    "CODE_TO_TOKEN",
+    "CODE_TO_TOKEN_ERROR"
+  ],
+  "adminEventsEnabled": true,
+  "adminEventsDetailsEnabled": true,
+  "roles": {
+    "realm": [
+      {
+        "name": "admin",
+        "description": "Administrator role with full access",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "ecommerce-demo"
+      },
+      {
+        "name": "manager",
+        "description": "Manager role with management access",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "ecommerce-demo"
+      },
+      {
+        "name": "employee",
+        "description": "Employee role with limited access",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "ecommerce-demo"
+      },
+      {
+        "name": "customer",
+        "description": "Customer role for end users",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "ecommerce-demo"
+      },
+      {
+        "name": "user",
+        "description": "Default user role",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "ecommerce-demo"
+      }
+    ]
+  },
+  "groups": [
+    {
+      "name": "Administrators",
+      "path": "/Administrators",
+      "realmRoles": [
+        "admin",
+        "user"
+      ],
+      "subGroups": []
+    },
+    {
+      "name": "Managers",
+      "path": "/Managers",
+      "realmRoles": [
+        "manager",
+        "user"
+      ],
+      "subGroups": []
+    },
+    {
+      "name": "Employees",
+      "path": "/Employees",
+      "realmRoles": [
+        "employee",
+        "user"
+      ],
+      "subGroups": [
+        {
+          "name": "Sales",
+          "path": "/Employees/Sales",
+          "realmRoles": [
+            "employee",
+            "user"
+          ]
+        },
+        {
+          "name": "Support",
+          "path": "/Employees/Support",
+          "realmRoles": [
+            "employee",
+            "user"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "path": "/Customers",
+      "realmRoles": [
+        "customer",
+        "user"
+      ],
+      "subGroups": [
+        {
+          "name": "Premium",
+          "path": "/Customers/Premium",
+          "realmRoles": [
+            "customer",
+            "user"
+          ]
+        },
+        {
+          "name": "Standard",
+          "path": "/Customers/Standard",
+          "realmRoles": [
+            "customer",
+            "user"
+          ]
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "email": "admin@ecommerce-demo.com",
+      "firstName": "System",
+      "lastName": "Administrator",
+      "enabled": true,
+      "emailVerified": true,
+      "groups": [
+        "/Administrators"
+      ],
+      "realmRoles": [
+        "admin",
+        "user"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin123",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "manager",
+      "email": "manager@ecommerce-demo.com",
+      "firstName": "Store",
+      "lastName": "Manager",
+      "enabled": true,
+      "emailVerified": true,
+      "groups": [
+        "/Managers"
+      ],
+      "realmRoles": [
+        "manager",
+        "user"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "manager123",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "employee1",
+      "email": "employee1@ecommerce-demo.com",
+      "firstName": "John",
+      "lastName": "Smith",
+      "enabled": true,
+      "emailVerified": true,
+      "groups": [
+        "/Employees/Sales"
+      ],
+      "realmRoles": [
+        "employee",
+        "user"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "employee123",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "employee2",
+      "email": "employee2@ecommerce-demo.com",
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "enabled": true,
+      "emailVerified": true,
+      "groups": [
+        "/Employees/Support"
+      ],
+      "realmRoles": [
+        "employee",
+        "user"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "employee123",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "customer1",
+      "email": "customer1@example.com",
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "enabled": true,
+      "emailVerified": true,
+      "groups": [
+        "/Customers/Premium"
+      ],
+      "realmRoles": [
+        "customer",
+        "user"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "customer123",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "customer2",
+      "email": "customer2@example.com",
+      "firstName": "Bob",
+      "lastName": "Wilson",
+      "enabled": true,
+      "emailVerified": true,
+      "groups": [
+        "/Customers/Standard"
+      ],
+      "realmRoles": [
+        "customer",
+        "user"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "customer123",
+          "temporary": false
+        }
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "ecommerce-backend",
+      "name": "E-Commerce Backend Service",
+      "description": "Backend service for E-Commerce application",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "backend-secret-key-2024",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "publicClient": false,
+      "protocol": "openid-connect",
+      "attributes": {
+        "access.token.lifespan": "1800",
+        "client.secret.creation.time": "1640995200"
+      },
+      "defaultClientScopes": [
+        "web-origins",
+        "acr",
+        "profile",
+        "roles",
+        "email"
+      ],
+      "optionalClientScopes": [
+        "address",
+        "phone",
+        "offline_access",
+        "microprofile-jwt"
+      ]
+    },
+    {
+      "clientId": "ecommerce-frontend",
+      "name": "E-Commerce Frontend Application",
+      "description": "Frontend Angular application for E-Commerce",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "redirectUris": [
+        "http://localhost:4200/*",
+        "http://localhost:4200/auth/callback"
+      ],
+      "webOrigins": [
+        "http://localhost:4200"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://localhost:4200/*"
+      },
+      "defaultClientScopes": [
+        "web-origins",
+        "acr",
+        "profile",
+        "roles",
+        "email"
+      ],
+      "optionalClientScopes": [
+        "address",
+        "phone",
+        "offline_access",
+        "microprofile-jwt"
+      ]
+    }
+  ]
+}
