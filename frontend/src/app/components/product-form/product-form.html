@@ -19,18 +19,18 @@
           <mat-icon class="text-blue-600">info</mat-icon>
           Basic Information
         </h3>
-        
+
         <div class="space-y-4">
           <mat-form-field appearance="outline" class="w-full">
             <mat-label>Product Name</mat-label>
-            <input matInput [(ngModel)]="product.name" name="name" required 
+            <input matInput [(ngModel)]="product.name" name="name" required
                    placeholder="Enter product name">
             <mat-icon matPrefix class="text-gray-400">inventory_2</mat-icon>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="w-full">
             <mat-label>Description</mat-label>
-            <textarea matInput [(ngModel)]="product.description" name="description" 
+            <textarea matInput [(ngModel)]="product.description" name="description"
                       rows="3" required placeholder="Describe your product..."></textarea>
             <mat-icon matPrefix class="text-gray-400">description</mat-icon>
           </mat-form-field>
@@ -56,11 +56,11 @@
           <mat-icon class="text-green-600">monetization_on</mat-icon>
           Pricing & Inventory
         </h3>
-        
+
         <div class="grid grid-cols-2 gap-4">
           <mat-form-field appearance="outline" class="w-full">
             <mat-label>Price</mat-label>
-            <input matInput type="number" [(ngModel)]="product.price" name="price" 
+            <input matInput type="number" [(ngModel)]="product.price" name="price"
                    min="0" step="0.01" required placeholder="0.00">
             <span matPrefix class="text-green-600 font-semibold">$ </span>
             <mat-icon matSuffix class="text-gray-400">attach_money</mat-icon>
@@ -68,15 +68,15 @@
 
           <mat-form-field appearance="outline" class="w-full">
             <mat-label>Stock Quantity</mat-label>
-            <input matInput type="number" [(ngModel)]="product.stockQuantity" 
+            <input matInput type="number" [(ngModel)]="product.stockQuantity"
                    name="stockQuantity" min="0" required placeholder="0">
             <mat-icon matPrefix class="text-gray-400">inventory</mat-icon>
             <span matSuffix class="text-gray-500 text-sm">units</span>
           </mat-form-field>
         </div>
-        
+
         <!-- Stock Status Indicator -->
-        <div class="mt-4 p-4 rounded-lg border" 
+        <div class="mt-4 p-4 rounded-lg border"
              [ngClass]="{
                'bg-green-50 border-green-200': product.stockQuantity > 10,
                'bg-yellow-50 border-yellow-200': product.stockQuantity > 0 && product.stockQuantity <= 10,
@@ -113,7 +113,7 @@
             <mat-icon class="mr-2">close</mat-icon>
             Cancel
           </button>
-          <button type="submit" mat-raised-button color="primary" 
+          <button type="submit" mat-raised-button color="primary"
                   [disabled]="!isFormValid()" class="px-8">
             <mat-icon class="mr-2">{{product.id ? 'save' : 'add'}}</mat-icon>
             {{product.id ? 'Update Product' : 'Create Product'}}

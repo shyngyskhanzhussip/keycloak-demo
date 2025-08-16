@@ -16,7 +16,7 @@
         </button>
       </div>
     </div>
-    
+
     <!-- Search and Filter Section -->
     <div class="custom-card p-6 mb-6">
       <div class="flex flex-wrap gap-4">
@@ -30,7 +30,7 @@
             </button>
           </mat-form-field>
         </div>
-        
+
         <div class="w-48">
           <mat-form-field appearance="outline" class="w-full">
             <mat-label>Category</mat-label>
@@ -43,7 +43,7 @@
             <mat-icon matPrefix>category</mat-icon>
           </mat-form-field>
         </div>
-        
+
         <div class="flex items-end gap-2">
           <button mat-raised-button color="primary" (click)="openProductDialog()" class="px-6">
             <mat-icon class="mr-2">add</mat-icon>
@@ -63,7 +63,7 @@
       <h3 class="text-lg font-semibold text-gray-900">Product Inventory</h3>
       <p class="text-sm text-gray-600 mt-1">{{products.length}} products in total</p>
     </div>
-    
+
     <div class="overflow-x-auto">
       <table mat-table [dataSource]="products" class="w-full">
         <!-- ID Column -->
@@ -138,7 +138,7 @@
                       'bg-yellow-100 text-yellow-800': product.stockQuantity > 0 && product.stockQuantity <= 10,
                       'bg-red-100 text-red-800': product.stockQuantity === 0
                     }">
-                <mat-icon class="text-xs mr-1" 
+                <mat-icon class="text-xs mr-1"
                          [ngClass]="{
                            'text-green-600': product.stockQuantity > 10,
                            'text-yellow-600': product.stockQuantity > 0 && product.stockQuantity <= 10,

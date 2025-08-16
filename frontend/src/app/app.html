@@ -9,12 +9,12 @@
         <h2 class="text-xl font-bold text-gray-800">{{title}}</h2>
         <p class="text-sm text-gray-600 mt-1">Management System</p>
       </div>
-      
+
       <!-- Navigation -->
       <mat-nav-list class="pt-0">
-        <a mat-list-item 
-           routerLink="/products" 
-           routerLinkActive="active" 
+        <a mat-list-item
+           routerLink="/products"
+           routerLinkActive="active"
            class="sidebar-nav-item mb-3"
            #productsLink="routerLinkActive">
           <mat-icon matListItemIcon [style.color]="productsLink.isActive ? 'white' : '#64748b'">inventory_2</mat-icon>
@@ -23,9 +23,9 @@
             <mat-icon style="color: white; font-size: 18px;">arrow_forward_ios</mat-icon>
           </div>
         </a>
-        <a mat-list-item 
-           routerLink="/orders" 
-           routerLinkActive="active" 
+        <a mat-list-item
+           routerLink="/orders"
+           routerLinkActive="active"
            class="sidebar-nav-item mb-3"
            #ordersLink="routerLinkActive">
           <mat-icon matListItemIcon [style.color]="ordersLink.isActive ? 'white' : '#64748b'">receipt_long</mat-icon>
@@ -35,7 +35,7 @@
           </div>
         </a>
       </mat-nav-list>
-      
+
       <!-- Footer -->
       <div class="mt-8 pt-4 border-t border-gray-300">
         <p class="text-xs text-gray-500 text-center">Version 1.0.0</p>
