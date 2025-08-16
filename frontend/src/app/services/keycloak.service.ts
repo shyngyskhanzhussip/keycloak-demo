@@ -120,7 +120,7 @@ export class KeycloakService {
     try {
       const profile = await this.keycloak.loadUserProfile();
       const tokenParsed = this.keycloak.tokenParsed;
-      
+
       const userProfile: UserProfile = {
         id: profile.id,
         username: profile.username,
@@ -139,7 +139,7 @@ export class KeycloakService {
 
   private extractRoles(tokenParsed: any): string[] {
     const roles: string[] = [];
-    
+
     // Extract realm roles
     if (tokenParsed?.realm_access?.roles) {
       roles.push(...tokenParsed.realm_access.roles);

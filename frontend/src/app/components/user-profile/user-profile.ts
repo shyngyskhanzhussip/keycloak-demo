@@ -70,23 +70,23 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   getRoleDisplayName(): string {
     if (!this.userProfile?.roles) return 'User';
-    
+
     if (this.userProfile.roles.includes('admin')) return 'Administrator';
     if (this.userProfile.roles.includes('manager')) return 'Manager';
     if (this.userProfile.roles.includes('employee')) return 'Employee';
     if (this.userProfile.roles.includes('customer')) return 'Customer';
-    
+
     return 'User';
   }
 
   getRoleIcon(): string {
     if (!this.userProfile?.roles) return 'person';
-    
+
     if (this.userProfile.roles.includes('admin')) return 'admin_panel_settings';
     if (this.userProfile.roles.includes('manager')) return 'supervisor_account';
     if (this.userProfile.roles.includes('employee')) return 'badge';
     if (this.userProfile.roles.includes('customer')) return 'person';
-    
+
     return 'person';
   }
 }
