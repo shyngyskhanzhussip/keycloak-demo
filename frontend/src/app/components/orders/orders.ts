@@ -118,21 +118,47 @@ export class OrdersComponent implements OnInit {
   getStatusColor(status: OrderStatus): string {
     switch (status) {
       case OrderStatus.PENDING:
-        return 'text-yellow-600 bg-yellow-100';
+        return 'status-badge status-pending';
       case OrderStatus.CONFIRMED:
-        return 'text-blue-600 bg-blue-100';
+        return 'status-badge status-confirmed';
       case OrderStatus.SHIPPED:
-        return 'text-purple-600 bg-purple-100';
+        return 'status-badge status-shipped';
       case OrderStatus.DELIVERED:
-        return 'text-green-600 bg-green-100';
+        return 'status-badge status-delivered';
       case OrderStatus.CANCELLED:
-        return 'text-red-600 bg-red-100';
+        return 'status-badge status-cancelled';
       default:
-        return 'text-gray-600 bg-gray-100';
+        return 'status-badge text-gray-600 bg-gray-100';
     }
   }
 
+  getStatusDotColor(status: OrderStatus): string {
+    switch (status) {
+      case OrderStatus.PENDING:
+        return 'bg-yellow-400';
+      case OrderStatus.CONFIRMED:
+        return 'bg-blue-400';
+      case OrderStatus.SHIPPED:
+        return 'bg-purple-400';
+      case OrderStatus.DELIVERED:
+        return 'bg-green-400';
+      case OrderStatus.CANCELLED:
+        return 'bg-red-400';
+      default:
+        return 'bg-gray-400';
+    }
+  }
+
+  getTotalRevenue(): string {
+    const total = this.orders.reduce((sum, order) => sum + order.totalAmount, 0);
+    return total.toFixed(2);
+  }
+
   formatDate(dateString: string): string {
-    return new Date(dateString).toLocaleDateString();
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
   }
 }
