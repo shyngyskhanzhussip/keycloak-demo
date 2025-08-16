@@ -11,7 +11,7 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
-import { ProductFormComponent } from '../product-form/product-form.component';
+import { ProductFormComponent } from '../product-form/product-form';
 
 @Component({
   selector: 'app-products',
